@@ -1,3 +1,8 @@
+    <?php
+        if (!isset($_SESSION)) {
+            session_start();
+        }
+    ?>
     <header class="cabecalho">
         <img src="/assets/logohome.webp" alt="Logo do fut memória" class="logo">
         <h1>Fut memória</h1>
@@ -21,12 +26,14 @@
                         href="/cadastro">Cadastro
                     </a>
                 </li>
-
-                <li>
-                    <a 
-                        href="/login">Login
-                    </a>
-                </li>
+                
+                <?php
+                   if(!isset($_SESSION['user'])) {
+                        echo '<li><a href="/login">Login</a></li>';
+                    } else {
+                       echo '<li><a href="/logout">Sair</a></li>';
+                    }
+                ?>
 
                 <li>
                     <a 

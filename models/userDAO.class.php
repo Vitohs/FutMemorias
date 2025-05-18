@@ -1,5 +1,5 @@
 <?php
-    class userDAO extends Conn
+    class UserDAO extends Conn
     {
         public function __construct()
         {
@@ -8,27 +8,50 @@
 
         public function insert(User $user)
         {
+               try{
+        // Verifica se já existe usuário com o mesmo nome
+        $sql = "SELECT COUNT(*) FROM users WHERE nome = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(1, $user->getNome());
+        $stmt->execute();
+        if($stmt->fetchColumn() > 0){
+            return "Esse nick já está sendo usado!";
+        }
+
+        $sql = "INSERT INTO users (nome, senha, perfil) VALUES (?, ?, ?)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(1, $user->getNome());
+        $stmt->bindValue(2, password_hash($user->getSenha(), PASSWORD_DEFAULT));
+        $stmt->bindValue(3, $user->getPerfil());
+        $stmt->execute();
+        $this->db = null;
+        return "Usuario cadastrado com sucesso!";
+    }
+    catch(PDOException $e){
+        echo $e->getCode();
+        echo $e->getMessage();
+        die();
+    }
+        }
+        public function login(User $user){
             try{
-                $sql = "INSERT INTO users (nome, senha, perfil) VALUES (:nome, :senha, :perfil)";
+                $sql = "SELECT * FROM users WHERE nome = ?";
                 $stmt = $this->db->prepare($sql);
-                $stmt->bindValue(':nome', $user->getNome());
-                $stmt->bindValue(':senha', password_hash($user->getSenha(), PASSWORD_DEFAULT));
-                $stmt->bindValue(':perfil', $user->getPerfil());
+                $stmt->bindValue(1, $user->getNome());
                 $stmt->execute();
-                //fecha a conexão
+                $result = $stmt->fetch(PDO::FETCH_ASSOC);
                 $this->db = null;
-                return "Usuario cadastrado com sucesso!";
+                if($result && password_verify($user->getSenha(), $result['senha'])){
+                    return $result;
+                }else{
+                    return false;
+                }
             }
             catch(PDOException $e){
-				echo $e->getCode();
+                echo $e->getCode();
 				echo $e->getMessage();
 				die();
-			}
-        }
-        public function logout()
-        {
-            session_destroy();
-            header("Location: ../index.php");
+            }
         }
     }
 ?>

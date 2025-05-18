@@ -40,4 +40,7 @@
 	$route->get("/login",[CadastroController::class, "login"]);
 	//login:post
 	$route->post("/login",[CadastroController::class, "login"]);
+
+	//logout
+	$route->get("/logout",[CadastroController::class, "logout"]);
 ?>
