@@ -6,8 +6,9 @@
   height: 100vh;
 }
 .notFound{
-  width: 35%;
+  width: 30%;
   height:60%;
+  object-fit: cover;
   margin-left: 15%;
 }
 @media (max-width: 768px) {

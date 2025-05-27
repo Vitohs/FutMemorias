@@ -43,4 +43,10 @@
 
 	//logout
 	$route->get("/logout",[CadastroController::class, "logout"]);
+
+	//jogo
+	$route->get("/jogar",[InicioController::class, "jogar"]);
+
+	//game
+	$route->get("/game", [InicioCOntroller::class, "game"]);
 ?>

@@ -1,0 +1,49 @@
+.content{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.lulu{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+}
+.joga{
+    width: 450px;
+    height: 40px;
+    border: 2px solid #640d14;
+    background-color: #ad2831;
+    border-radius: 7px;
+    color: white;
+    text-transform: uppercase;
+}
+.joga:hover{
+    cursor: pointer;
+}
+.link{
+    text-decoration: none;
+}
+@media (max-width: 768px){
+    .content{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .lulu{
+        height: 250px;
+        width: 250px;
+    }
+    .joga{
+        width: 300px;
+        height: 40px;
+        border: 2px solid #640d14;
+        background-color: #ad2831;
+        border-radius: 7px;
+        color: white;
+        text-transform: uppercase;
+    }
+}

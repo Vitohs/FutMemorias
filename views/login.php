@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | fut memória</title>
+    <title>Login | Fut memoria</title>
     <link rel="stylesheet" href="/style/menu.css">
     <link rel="stylesheet" href="/style/footer.css">
     <link rel="stylesheet" href="/style/cadastro.css">

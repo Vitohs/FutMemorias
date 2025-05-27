@@ -5,7 +5,6 @@
 	}
     class CadastroController{
         
-        //cadastro
         public function Cadastro(){
             if($_POST){
                $erro = false;
@@ -33,8 +32,6 @@
             }
             require_once "views/cadastro.php";
         }
-
-        //login
         public function Login(){
             if($_POST){
                 $erro = false;

@@ -61,6 +61,9 @@ li:hover {
     cursor: pointer;
 }
 @media (max-width: 768px) {
+    h1{
+        font-size: 25px;
+    }
     .menu-lista {
         display: none;
         flex-direction: column;
